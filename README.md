@@ -1,5 +1,7 @@
 # Install the packages
-npm install
+
+```npm install
+```
 
 # azure login in the CLI
 ```
