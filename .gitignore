@@ -1,0 +1,97 @@
+local.settings.json
+
+# Dependencies
+node_modules/
+
+# Azure Functions
+local.settings.json
+.azure/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+out/
+coverage/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Visual Studio
+.vs/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Azure Functions Core Tools
+bin/
+obj/
+
+# Azure Storage Emulator / Azurite
+__blobstorage__
+__queuestorage__
+__azurite_db*
+
+# Test output
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.eslintcache
+.parcel-cache/
+
+# TypeScript
+*.tsbuildinfo
+
+# Package manager
+.pnpm-store/
+.npm/
+
+# Secrets
+*.pem
+*.pfx
+*.key
+*.crt
+*.cer
+
+# Terraform (if used)
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Docker
+docker-compose.override.yml
+
+# Mac/Linux swap files
+*~
+*.swp
+*.swo
