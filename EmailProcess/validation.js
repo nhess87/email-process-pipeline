@@ -46,9 +46,36 @@ function extractMessageId(notification) {
     return messageId || null;
 }
 
+
+/**
+ * Return all valid notifications from the Graph envelope.
+ * A notification is valid if:
+ * - body.value is an array
+ * - changeType === "created"
+ * - resourceData.id exists
+ */
+function getValidNotifications(body) {
+    if (!body || !Array.isArray(body.value) || body.value.length === 0) {
+        return [];
+    }
+
+    return body.value
+        .filter(n => {
+            const changeType = String(n?.changeType || "").toLowerCase();
+            const messageId = n?.resourceData?.id;
+            return changeType === "created" && !!messageId;
+        })
+        .map(n => ({
+            ...n,
+            messageId: n.resourceData.id
+        }));
+}
+
+
 module.exports = {
     getValidationToken,
     buildValidationResponse,
     validateNotification,
-    extractMessageId
+    extractMessageId,
+    getValidNotifications
 };

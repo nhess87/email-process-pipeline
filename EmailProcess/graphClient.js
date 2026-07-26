@@ -45,7 +45,7 @@ async function fetchEmailFromGraph(token, messageId) {
         throw new Error("Missing MONITORED_MAILBOX environment variable");
     }
 
-    const url = `https://graph.microsoft.com/v1.0/users/${mailbox}/messages/${messageId}?$select=subject,body,from`;
+    const url = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(mailbox)}/messages/${encodeURIComponent(messageId)}?$select=subject,body,from,sender,replyTo,toRecipients,internetMessageHeaders`;
     
     const response = await fetch(url, {
         headers: { Authorization: `Bearer ${token}` }
@@ -98,7 +98,7 @@ async function sendReply(token, messageId, content, recipient) {
     if (!mailbox) {
         throw new Error("Missing MONITORED_MAILBOX environment variable");
     }
-    const url = `https://graph.microsoft.com/v1.0/users/${mailbox}/sendMail`;
+    const url = `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(mailbox)}/sendMail`;
     console.log("[REPLY] Sending to:", recipient, "| content length:", (content || "").length, "| via:", mailbox);
 
     const fetchOptions = {

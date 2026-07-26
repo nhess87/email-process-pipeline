@@ -10,7 +10,7 @@ module.exports = async function (context, queueItem) {
         context.log("[QUEUE] Processing queued message:", queueItem.messageId);
 
         // Run the full email processing pipeline
-        await emailProcessor.processEmailInBackground(context, queueItem.messageId);
+        await emailProcessor.processEmailInBackground(context, queueItem);
 
         context.log("[QUEUE] Message processed successfully");
 
