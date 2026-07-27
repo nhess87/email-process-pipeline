@@ -35,6 +35,8 @@ Note: the name of the top directory should be the same as your azure function ap
 
 ## Environment Variables Referenced (by module)
 
+The Function App needs these permissions:
+
 | Variable               | Used in                          | Purpose                                  |
 |------------------------|----------------------------------|------------------------------------------|
 | GRAPH_TENANT_ID        | graphClient.js, SubscriptionMonitor | Azure AD tenant for auth               |
@@ -47,3 +49,15 @@ Note: the name of the top directory should be the same as your azure function ap
 | FOUNDRY_PROJECT_ENDPOINT       | foundryClient                       | Azure AI Foundry project URL           |
 | FOUNDRY_WORKFLOW_NAME          | foundryClient                       | Azure AI Foundry workflow name         |
 | FOUNDRY_WORKFLOW_VERSION       | foundryClient                       | Azure AI Foundry workflow version      |
+
+Function App calls Microsoft Graph to:
+
+1. Create a subscription (/subscriptions)
+
+2. Receive email notifications
+
+3. Fetch the full email content (/messages/{id})
+
+4. Read mailbox settings
+
+Without these permissions, Graph returns 401 Unauthorized or 403 Forbidden.
